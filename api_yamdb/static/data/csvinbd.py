@@ -1,3 +1,4 @@
+"""Скрипт для заполнения БД данными из файлов csv."""
 import csv
 import sqlite3
 from random import randint

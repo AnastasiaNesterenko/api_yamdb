@@ -1,3 +1,7 @@
+"""
+Приложение reviews.
+Реализована проверка года произведения.
+"""
 from django.utils import timezone
 
 from django.core.validators import RegexValidator

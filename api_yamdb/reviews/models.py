@@ -1,3 +1,9 @@
+"""
+Приложение reviews.
+В models.py описаны данные, которые хранятся в БД.
+Модель для категории, жанра, названия произведения,
+рецензии и комментария.
+"""
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
@@ -6,6 +12,7 @@ from .validators import characters_validator, year_validator
 
 
 class Category(models.Model):
+    """Модель для категории."""
     name = models.CharField(
         max_length=256,
         verbose_name='Название',
@@ -28,6 +35,7 @@ class Category(models.Model):
 
 
 class Genre(models.Model):
+    """Модель для жанра."""
     name = models.CharField(
         max_length=100,
         verbose_name='Название',
@@ -45,6 +53,7 @@ class Genre(models.Model):
 
 
 class Title(models.Model):
+    """Модель для названия произведения."""
     name = models.CharField(
         max_length=100,
         verbose_name='Название',
@@ -85,6 +94,7 @@ class Title(models.Model):
 
 
 class Review(models.Model):
+    """Модель для рецензии."""
     title = models.ForeignKey(
         Title,
         on_delete=models.CASCADE,
@@ -119,6 +129,7 @@ class Review(models.Model):
 
 
 class Comment(models.Model):
+    """Модель для комментария."""
     review = models.ForeignKey(
         Review,
         on_delete=models.CASCADE,

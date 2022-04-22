@@ -1,3 +1,7 @@
+"""
+Приложение api.
+Реализация самописных функций создания, удаления.
+"""
 from rest_framework import filters, mixins, viewsets
 
 

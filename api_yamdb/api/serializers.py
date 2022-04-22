@@ -1,3 +1,8 @@
+"""
+Приложение api.
+Сериализаторы для моделей категорий, жанров, названий произведений,
+рецензий, комментариев.
+"""
 from django.shortcuts import get_object_or_404
 from rest_framework import serializers
 
@@ -5,6 +10,7 @@ from reviews.models import Category, Comment, Genre, Review, Title
 
 
 class CategorySerializer(serializers.ModelSerializer):
+    """Сериализатор для категорий."""
 
     class Meta:
         exclude = ['id']
@@ -12,6 +18,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class GenreSerializer(serializers.ModelSerializer):
+    """Сериализатор для жанров."""
 
     class Meta:
         exclude = ['id']
@@ -19,6 +26,7 @@ class GenreSerializer(serializers.ModelSerializer):
 
 
 class TitleSerializer(serializers.ModelSerializer):
+    """Сериализатор для названий произведений."""
     category = CategorySerializer(read_only=True)
     genre = GenreSerializer(many=True, read_only=True)
     rating = serializers.FloatField(read_only=True)
@@ -29,6 +37,7 @@ class TitleSerializer(serializers.ModelSerializer):
 
 
 class ReviewSerializer(serializers.ModelSerializer):
+    """Сериализатор для рецензий."""
     author = serializers.SlugRelatedField(
         read_only=True,
         slug_field='username'
@@ -57,6 +66,7 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 
 class CommentSerializer(serializers.ModelSerializer):
+    """Сериализатор для комментариев."""
     author = serializers.SlugRelatedField(
         read_only=True,
         slug_field='username'

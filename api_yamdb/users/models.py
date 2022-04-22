@@ -1,3 +1,8 @@
+"""
+Приложение users отвечает за работу с пользователем:
+регистрация, авторизация.
+Модель для пользователя.
+"""
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 

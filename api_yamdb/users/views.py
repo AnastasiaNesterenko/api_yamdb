@@ -1,3 +1,7 @@
+"""
+Приложение users отвечает за работу с пользователем:
+регистрация, авторизация.
+"""
 from django.conf import settings
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import send_mail
@@ -36,6 +40,7 @@ class UserViewSet(viewsets.ModelViewSet):
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def signup(request):
+    """Функция, реализующая регистрацию."""
     serializer = UserCreationSerializer(data=request.data)
     serializer.is_valid(raise_exception=True)
     email = serializer.validated_data['email']
@@ -66,6 +71,7 @@ def signup(request):
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def get_jwt_token(request):
+    """Функция, реализующая получение токена."""
     serializer = UserAccessTokenSerializer(data=request.data)
     serializer.is_valid(raise_exception=True)
     username = serializer.validated_data['username']

@@ -1,3 +1,8 @@
+"""
+Приложение users отвечает за работу с пользователем:
+регистрация, авторизация.
+Реализация работы админки.
+"""
 from django.contrib import admin
 
 from .models import User
